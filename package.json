@@ -1,0 +1,50 @@
+{
+	"name": "obsidian-code-files-plugin",
+	"version": "1.1.9",
+	"main": "main.js",
+	"scripts": {
+		"build": "obsidian-plugin build src/main.ts",
+		"dev": "obsidian-plugin dev src/main.ts",
+		"postversion": "node version-bump.mjs && yarn build",
+		"release": "publish-fast",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"keywords": [],
+	"author": "",
+	"devDependencies": {
+		"@lukasbach/eslint-config-deps": "^1.0.2",
+		"@types/node": "^16.11.6",
+		"builtin-modules": "3.3.0",
+		"esbuild": "0.17.3",
+		"eslint": "^8.36.0",
+		"obsidian": "^1.4.11",
+		"obsidian-plugin-cli": "^0.9.0",
+		"publish-fast": "^0.0.19",
+		"tslib": "2.4.0",
+		"typescript": "4.7.4",
+		"@codemirror/state": "6.0.0",
+		"@codemirror/view": "6.0.0"
+	},
+	"eslintConfig": {
+		"extends": "@lukasbach/base/react",
+		"parserOptions": {
+			"project": "./tsconfig.json"
+		},
+		"ignorePatterns": [
+			"lib",
+			"*.js"
+		]
+	},
+	"volta": {
+		"node": "18.15.0",
+		"yarn": "1.22.19"
+	},
+	"publish": {
+		"preScripts": "lint,build",
+		"skipPublish": true,
+		"releaseAssets": "dist/*",
+		"noVersionPrefix": true,
+		"branch": "master"
+	}
+}
